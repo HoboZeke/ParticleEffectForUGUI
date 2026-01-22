@@ -48,7 +48,7 @@ namespace Coffee.UIExtensions
         private UpdateMode m_UpdateMode;
 
         [SerializeField]
-        private UnityEvent m_OnAttracted;
+        private UnityEvent<ParticleSystem.Particle> m_OnAttracted;
 
         private List<UIParticle> _uiParticles = new List<UIParticle>();
 
@@ -82,7 +82,7 @@ namespace Coffee.UIExtensions
             set => m_UpdateMode = value;
         }
 
-        public UnityEvent onAttracted
+        public UnityEvent<ParticleSystem.Particle> onAttracted
         {
             get => m_OnAttracted;
             set => m_OnAttracted = value;
@@ -177,7 +177,7 @@ namespace Coffee.UIExtensions
                         {
                             try
                             {
-                                m_OnAttracted.Invoke();
+                                m_OnAttracted.Invoke(p);
                             }
                             catch (Exception e)
                             {
